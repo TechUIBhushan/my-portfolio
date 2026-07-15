@@ -1,0 +1,73 @@
+@use "sass:map";
+@use "variables" as *;
+
+// Breakpoints
+$breakpoints: (
+  "sm": 640px,
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1280px,
+  "2xl": 1536px,
+);
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}.";
+  }
+}
+
+// Glassmorphism effect
+@mixin glass-panel {
+  background: $bg-dark-card;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $border-color;
+  border-radius: 16px;
+  transition: $transition-smooth;
+
+  &:hover {
+    background: $bg-dark-card-hover;
+    border-color: $border-color-hover;
+    box-shadow: 0 8px 30px rgba(0, 242, 254, 0.05);
+  }
+}
+
+// Flex center helper
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Gradient text
+@mixin gradient-text($g-start: $accent-primary, $g-end: $accent-secondary) {
+  background: linear-gradient(135deg, $g-start 0%, $g-end 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Custom scrollbar
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #0b0f19;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+
+    &:hover {
+      background: $accent-secondary;
+    }
+  }
+}
