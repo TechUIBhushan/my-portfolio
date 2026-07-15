@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 const roles = [
   "Senior Manager App Dev",
   "Technical Architect",
   "Lead Product Architect",
-  "AWS Solutions Architect"
+  "AWS Solutions Architect",
 ];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Hero() {
 
     if (!isDeleting && currentText === activeRole) {
       timer = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && currentText === '') {
+    } else if (isDeleting && currentText === "") {
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % roles.length);
     } else {
@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section id="home" className="hero section-container">
       <div className="hero-content">
-        <motion.div 
+        <motion.div
           className="hero-text"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -49,14 +49,18 @@ export default function Hero() {
         >
           <span className="greeting">Welcome to my space</span>
           <h1>Bhushan Kumar Sharma</h1>
-          
+
           <div className="role-title">
             I'm a <span>{currentText}</span>
             <span className="cursor">|</span>
           </div>
 
           <p className="description">
-            Experienced Product & Technical Architect with over 19 years of expertise designing, building, and deploying mission-critical, full-stack enterprise applications. Dedicated to crafting highly scalable, performant, and secure solutions with modern frontend and cloud technologies.
+            Experienced Product & Technical Architect with over 19+ years of
+            expertise designing, building, and deploying mission-critical,
+            full-stack enterprise applications. Dedicated to crafting highly
+            scalable, performant, and secure solutions with modern frontend and
+            cloud technologies.
           </p>
 
           <div className="cta-group">
@@ -84,39 +88,39 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="hero-image-container"
           initial={{ opacity: 0, scale: 0.8, y: 0 }}
-          animate={{ 
-            opacity: 1, 
+          animate={{
+            opacity: 1,
             scale: 1,
-            y: [0, -12, 0]
+            y: [0, -12, 0],
           }}
-          transition={{ 
+          transition={{
             opacity: { duration: 0.8, delay: 0.2, ease: "easeOut" },
             scale: { duration: 0.8, delay: 0.2, ease: "easeOut" },
-            y: { repeat: Infinity, duration: 4.5, ease: "easeInOut" }
+            y: { repeat: Infinity, duration: 4.5, ease: "easeInOut" },
           }}
         >
           {/* Spinning Soccer Ball Effect */}
           <motion.div
             style={{
-              position: 'absolute',
-              top: '-32px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              fontSize: '2.8rem',
+              position: "absolute",
+              top: "-32px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              fontSize: "2.8rem",
               zIndex: 10,
-              filter: 'drop-shadow(0 0 10px rgba(0, 242, 254, 0.7))',
-              pointerEvents: 'none'
+              filter: "drop-shadow(0 0 10px rgba(0, 242, 254, 0.7))",
+              pointerEvents: "none",
             }}
-            animate={{ 
+            animate={{
               rotate: 360,
-              y: [0, -6, 0]
+              y: [0, -6, 0],
             }}
-            transition={{ 
+            transition={{
               rotate: { repeat: Infinity, duration: 12, ease: "linear" },
-              y: { repeat: Infinity, duration: 2.2, ease: "easeInOut" }
+              y: { repeat: Infinity, duration: 2.2, ease: "easeInOut" },
             }}
           >
             ⚽
@@ -128,12 +132,18 @@ export default function Hero() {
 
           {/* Floating tech badges */}
           <div className="tech-badge badge-1">
-            <ShieldCheck size={20} className="text-cyan-400" style={{ color: '#00f2fe' }} />
+            <ShieldCheck
+              size={20}
+              className="text-cyan-400"
+              style={{ color: "#00f2fe" }}
+            />
             <span>AWS Architect</span>
           </div>
 
           <div className="tech-badge badge-2">
-            <span style={{ color: '#f355da', fontWeight: 'bold' }}>19 Yrs Exp</span>
+            <span style={{ color: "#f355da", fontWeight: "bold" }}>
+              19+ Yrs Exp
+            </span>
           </div>
         </motion.div>
       </div>
