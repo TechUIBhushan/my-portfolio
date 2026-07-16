@@ -15,6 +15,7 @@
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid $border-color;
   transition: $transition-smooth;
+  box-shadow: 5px 5px 5px #000;
 
   .nav-container {
     max-width: 1200px;
