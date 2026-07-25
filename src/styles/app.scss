@@ -27,13 +27,73 @@
   }
 
   .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    @include gradient-text($accent-primary, $accent-secondary);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    text-decoration: none;
+    transition: $transition-smooth;
+
+    .nav-logo-icon-wrapper {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(16, 22, 37, 0.7);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 242, 254, 0.15);
+      perspective: 1000px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: -50%;
+        background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), transparent, rgba(112, 0, 255, 0.25));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+    }
+
+    .nav-logo-img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 242, 254, 0.4));
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .nav-logo-text {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      @include gradient-text($accent-primary, #a855f7);
+      transition: filter 0.3s ease;
+    }
+
+    &:hover {
+      .nav-logo-icon-wrapper {
+        border-color: rgba(0, 242, 254, 0.6);
+        box-shadow: 0 0 22px rgba(0, 242, 254, 0.4), inset 0 0 15px rgba(112, 0, 255, 0.3);
+        transform: translateY(-2px) scale(1.05) rotate(3deg);
+
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      .nav-logo-img {
+        transform: scale(1.1) rotate(-6deg);
+        filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.8));
+      }
+
+      .nav-logo-text {
+        filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.4));
+      }
+    }
   }
 
   .nav-links {
@@ -843,3 +903,152 @@
     color: $text-muted;
   }
 }
+
+/* ==========================================================================
+   PAGE LOAD 3D LOGO INTRO ANIMATION
+   ========================================================================== */
+.logo-intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, #0d1527 0%, #070b13 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.7s ease;
+
+  &.fly {
+    opacity: 0;
+    pointer-events: none;
+
+    .logo-intro-content {
+      transform: translate(
+        calc(-50vw + 140px),
+        calc(-50vh + 45px)
+      ) scale(0.3);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease 0.2s;
+    }
+
+    .logo-intro-glow-ring {
+      opacity: 0;
+      transform: scale(2.5);
+      transition: all 0.8s ease;
+    }
+  }
+
+  .logo-intro-glow-ring {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.3) 0%, rgba(112, 0, 255, 0.15) 55%, transparent 70%);
+    animation: introPulseRing 2s infinite alternate ease-in-out;
+    pointer-events: none;
+  }
+
+  .logo-intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .logo-3d-wrapper {
+    width: 160px;
+    height: 160px;
+    perspective: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-3d-img-intro {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 35px rgba(0, 242, 254, 0.9)) drop-shadow(0 0 70px rgba(112, 0, 255, 0.6));
+    animation: logo3DSpinMiddle 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .logo-intro-text {
+    margin-top: 24px;
+    font-size: 2.6rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    @include gradient-text($accent-primary, #a855f7);
+    filter: drop-shadow(0 0 18px rgba(0, 242, 254, 0.6));
+    animation: textFadeInUp 1.2s ease forwards 0.3s;
+    opacity: 0;
+  }
+
+  .logo-intro-subtitle {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: $text-secondary;
+    text-transform: uppercase;
+    animation: textFadeInUp 1.2s ease forwards 0.6s;
+    opacity: 0;
+  }
+}
+
+.nav-logo {
+  &.intro-active {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  &.intro-landed {
+    opacity: 1;
+    transform: scale(1);
+    animation: logoLandingPulse 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+@keyframes logo3DSpinMiddle {
+  0% {
+    transform: scale(0.1) rotateY(-720deg) rotateX(45deg);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.25) rotateY(-180deg) rotateX(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotateY(0deg) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes introPulseRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0.85;
+  }
+}
+
+@keyframes logoLandingPulse {
+  0% {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.9));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px transparent);
+  }
+}
+

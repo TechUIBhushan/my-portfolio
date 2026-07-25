@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo3D from "../assets/logo-3d.png";
 
 interface NavbarProps {
   activeSection: string;
+  isIntroActive?: boolean;
 }
 
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function Navbar({ activeSection, isIntroActive }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -35,9 +37,11 @@ export default function Navbar({ activeSection }: NavbarProps) {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <a href="#home" className="nav-logo">
-          <Code2 size={24} />
-          <span>Tech Bhushan</span>
+        <a href="#home" className={`nav-logo ${isIntroActive ? "intro-active" : "intro-landed"}`}>
+          <div className="nav-logo-icon-wrapper">
+            <img src={logo3D} alt="Tech Bhushan 3D Logo" className="nav-logo-img" />
+          </div>
+          <span className="nav-logo-text">Tech Bhushan</span>
         </a>
 
         {/* Desktop links */}
