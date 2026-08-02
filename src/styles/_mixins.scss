@@ -27,12 +27,12 @@ $breakpoints: (
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid $border-color;
   border-radius: 16px;
+  box-shadow: var(--card-shadow);
   transition: $transition-smooth;
 
   &:hover {
     background: $bg-dark-card-hover;
     border-color: $border-color-hover;
-    box-shadow: 0 8px 30px rgba(0, 242, 254, 0.05);
   }
 }
 
@@ -45,7 +45,7 @@ $breakpoints: (
 
 // Gradient text
 @mixin gradient-text($g-start: $accent-primary, $g-end: $accent-secondary) {
-  background: linear-gradient(135deg, $g-start 0%, $g-end 100%);
+  background: linear-gradient(135deg, #{$g-start} 0%, #{$g-end} 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,11 +59,11 @@ $breakpoints: (
   }
 
   &::-webkit-scrollbar-track {
-    background: #0b0f19;
+    background: var(--bg-main);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--border-color);
     border-radius: 4px;
 
     &:hover {

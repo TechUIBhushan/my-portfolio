@@ -123,11 +123,11 @@ export default function Hero() {
               y: { repeat: Infinity, duration: 2.2, ease: "easeInOut" },
             }}
           >
-            ⚽
+
           </motion.div>
 
           <div className="image-wrapper">
-            <img src="/bhushan_soccer.jpg" alt="Bhushan Kumar Sharma" />
+            <img src="/profilePic.png" alt="Bhushan Kumar Sharma" />
           </div>
 
           {/* Floating tech badges */}

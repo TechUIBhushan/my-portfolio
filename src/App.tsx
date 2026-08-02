@@ -7,12 +7,13 @@ import Experience from './components/Experience';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import LogoIntro from './components/LogoIntro';
+import { useTheme } from './hooks/useTheme';
 import './styles/app.scss';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isIntroActive, setIsIntroActive] = useState(true);
+  const { theme, toggleTheme } = useTheme();
+  const isIntroActive = false;
 
   useEffect(() => {
     const sections = ['home', 'about', 'skills', 'experience', 'certifications', 'contact'];
@@ -43,8 +44,6 @@ export default function App() {
 
   return (
     <>
-      <LogoIntro onComplete={() => setIsIntroActive(false)} />
-
       {/* Background Animated Blobs */}
       <div className="bg-blobs">
         <div className="blob blob-1" />
@@ -55,7 +54,12 @@ export default function App() {
         <div id="stars3" />
       </div>
 
-      <Navbar activeSection={activeSection} isIntroActive={isIntroActive} />
+      <Navbar 
+        activeSection={activeSection} 
+        isIntroActive={isIntroActive} 
+        theme={theme} 
+        toggleTheme={toggleTheme} 
+      />
       
       <main>
         <Hero />

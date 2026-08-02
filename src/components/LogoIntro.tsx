@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import logo3D from "../assets/logo-3d.png";
+import logo3D from "../assets/tech_bhushan_3d_logo.png";
 
 interface LogoIntroProps {
   onComplete?: () => void;

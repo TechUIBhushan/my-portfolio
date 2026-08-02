@@ -46,7 +46,7 @@ export default function Summary() {
         <p>A comprehensive outline of capabilities gained over a 19-year journey in software engineering and systems architecture.</p>
       </div>
 
-      <motion.div 
+      <motion.div
         className="summary-grid"
         variants={containerVariants}
         initial="hidden"
@@ -54,8 +54,8 @@ export default function Summary() {
         viewport={{ once: true, margin: "-100px" }}
       >
         {cards.map((card, idx) => (
-          <motion.div 
-            key={idx} 
+          <motion.div
+            key={idx}
             className="summary-card"
             variants={cardVariants}
             whileHover={{ y: -8 }}
