@@ -134,14 +134,13 @@ export default function Hero() {
           <div className="tech-badge badge-1">
             <ShieldCheck
               size={20}
-              className="text-cyan-400"
-              style={{ color: "#00f2fe" }}
+              style={{ color: "var(--accent-primary)" }}
             />
             <span>AWS Architect</span>
           </div>
 
           <div className="tech-badge badge-2">
-            <span style={{ color: "#f355da", fontWeight: "bold" }}>
+            <span style={{ color: "var(--accent-pink)", fontWeight: "bold" }}>
               19+ Yrs Exp
             </span>
           </div>

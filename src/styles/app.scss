@@ -269,7 +269,7 @@
       font-weight: 800;
       margin-bottom: 16px;
       letter-spacing: -1px;
-      text-shadow: 1px 5px blueviolet;
+      color: var(--text-primary);
 
       @include respond-to("sm") {
         font-size: 2.8rem;
@@ -373,21 +373,23 @@
         height: 100%;
         object-fit: cover;
         border-radius: inherit;
-        background: #0f172a;
+        background: var(--bg-main);
       }
     }
 
     .tech-badge {
       position: absolute;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(8px);
-      border: 1px solid $border-color;
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
       padding: 12px 18px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--card-shadow);
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
       &.badge-1 {
         top: 20px;
@@ -508,7 +510,7 @@
     margin-bottom: 40px;
 
     button {
-      background: rgba(16, 22, 37, 0.4);
+      background: var(--bg-card);
       color: $text-secondary;
       border: 1px solid $border-color;
       padding: 10px 20px;
@@ -521,10 +523,10 @@
       &.active {
         background: linear-gradient(
           135deg,
-          $accent-primary 0%,
-          $accent-secondary 100%
+          #{$accent-primary} 0%,
+          #{$accent-secondary} 100%
         );
-        color: #070b13;
+        color: #ffffff;
         border-color: transparent;
         box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
       }
@@ -762,9 +764,21 @@
         color: $text-primary;
         margin-bottom: 6px;
       }
-      p {
-        font-size: 0.9rem;
+      .cert-issuer {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: $text-primary;
+        margin-bottom: 4px;
+      }
+      .cert-id {
+        font-size: 0.85rem;
         color: $text-secondary;
+        margin-bottom: 4px;
+      }
+      .cert-meta {
+        font-size: 0.85rem;
+        color: $text-muted;
+        font-style: italic;
         margin-bottom: 8px;
       }
       .cred-link {
@@ -846,7 +860,7 @@
         width: 48px;
         height: 48px;
         border-radius: 12px;
-        background: rgba(255, 255, 255, 0.03);
+        background: var(--bg-card);
         border: 1px solid $border-color;
         @include flex-center;
         color: $text-secondary;
@@ -854,11 +868,11 @@
         transition: $transition-smooth;
 
         &:hover {
-          color: #070b13;
+          color: #ffffff;
           background: linear-gradient(
             135deg,
-            $accent-primary 0%,
-            $accent-secondary 100%
+            #{$accent-primary} 0%,
+            #{$accent-secondary} 100%
           );
           border-color: transparent;
           transform: translateY(-4px);
@@ -892,7 +906,7 @@
       input,
       textarea {
         width: 100%;
-        background: rgba(7, 11, 19, 0.5);
+        background: var(--bg-card);
         border: 1px solid $border-color;
         border-radius: 8px;
         padding: 12px 16px;
@@ -900,6 +914,10 @@
         font-family: $font-sans;
         font-size: 0.95rem;
         transition: $transition-smooth;
+
+        &::placeholder {
+          color: $text-muted;
+        }
 
         &:focus {
           outline: none;

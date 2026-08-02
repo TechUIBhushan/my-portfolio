@@ -56,11 +56,11 @@ export default function Certifications() {
             
             <div className="cert-info">
               <h3>{card.title}</h3>
-              <p style={{ fontWeight: 600, color: '#e2e8f0' }}>{card.issuer}</p>
-              <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>
+              <p className="cert-issuer">{card.issuer}</p>
+              <p className="cert-id">
                 {card.verificationId}
               </p>
-              <p style={{ fontSize: '0.85rem', color: '#64748b', fontStyle: 'italic', marginBottom: '8px' }}>
+              <p className="cert-meta">
                 {card.expiration}
               </p>
               
